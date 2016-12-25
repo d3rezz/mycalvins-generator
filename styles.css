@@ -1,0 +1,15 @@
+@font-face{
+    font-family:'FuturaLight';
+    src: url(fonts/FuturaLight.ttf) format('truetype');
+}
+
+h2 {
+    font-family: 'FuturaLight', Fallback, sans-serif;
+}
+
+
+#mycanvas{
+   background-size:cover;
+   background-position: center;
+   border: 1px solid #bbb;
+}
