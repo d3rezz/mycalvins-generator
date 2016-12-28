@@ -23,18 +23,31 @@ function readURL(){
                 newWidth = newHeight * ratio;
             }
 
-            canvas.width = newWidth;
-            canvas.height = newHeight;
-
             context.drawImage(imageObj, 0, 0, newWidth, newHeight);
 
             var whatido = document.getElementById('whatido').value;
-            context.font = '50px"FuturaLight"'
+            var fontSize = 40;
+            context.font = fontSize+"pt FuturaLight";
             context.fillStyle = 'white';
             context.textAlign="center";
 
-            context.fillText("I " + whatido + " in #mycalvins", canvas.width/2, canvas.height/2);
+            whatido = "  " + whatido + "  ";
+            text = "I " + whatido + " in #mycalvins"
 
+            //Fit text in canvas
+            console.log("text width: " + context.measureText(text).width + " 0.9 image width: " + newWidth);
+
+            while (context.measureText(text).width > 0.9*newWidth ) {
+                fontSize -= 1;
+                context.font = fontSize+"pt FuturaLight";
+                console.log("text width: " + context.measureText(text).width + " 0.9 image width: " + newWidth);
+            }
+
+            context.fillText(text, newWidth/2, newHeight/2);
+
+
+            //underline text
+            underline(context, whatido, newWidth/2 - context.measureText(text).width/2 + context.measureText("I ").width, newHeight/2, 10, "white", 2, 0);
 
         };
         imageObj.src = reader.result;
@@ -43,4 +56,19 @@ function readURL(){
         reader.readAsDataURL(file);
     }else{
     }
+}
+
+function underline(ctx, text, x, y, fontSize, color, thickness ,offset){
+  var width = ctx.measureText(text).width;
+  console.log("text width: "+ width);
+
+  y += fontSize+offset;
+
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = thickness;
+  ctx.moveTo(x,y);
+  ctx.lineTo(x+width,y);
+  ctx.stroke();
+
 }

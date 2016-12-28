@@ -11,5 +11,5 @@ h2 {
 #mycanvas{
    background-size:cover;
    background-position: center;
-   border: 1px solid #bbb;
+   /*border: 1px solid #bbb;*/
 }
