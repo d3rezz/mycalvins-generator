@@ -3,10 +3,14 @@
     src: url(fonts/FuturaLight.ttf) format('truetype');
 }
 
-h2 {
-    font-family: 'FuturaLight', Fallback, sans-serif;
+body {
+    width: 100%;
 }
 
+h2 {
+    font-family: 'FuturaLight', Fallback, sans-serif;
+    display: inline-block;
+}
 
 #mycanvas{
    background-size:cover;
